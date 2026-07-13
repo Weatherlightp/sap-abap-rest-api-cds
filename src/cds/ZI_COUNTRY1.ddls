@@ -1,0 +1,19 @@
+@AccessControl.authorizationCheck: #NOT_REQUIRED
+@EndUserText.label: 'Country Data with Coordinates'
+define view entity ZI_COUNTRY1 
+    as select from zcountry1 as Country
+        left outer join zcountry_coord as Coord
+            on Country.code = Coord.code
+
+
+{
+    key Country.code          as Code,
+        Country.common_name   as CommonName,
+        Country.country_name  as OfficialName,
+        Country.capital       as Capital,
+        Country.flag          as Flag,
+        Country.population    as Population,
+        Country.language      as Language,
+        Coord.latitude        as Latitude,
+        Coord.longitude       as Longitude
+}

@@ -1,0 +1,20 @@
+@AccessControl.authorizationCheck: #NOT_REQUIRED
+@EndUserText.label: 'Countries with Size Category'
+define view entity ZI_COUNTRY_SIZE
+  as select from ZI_COUNTRY1
+{
+    key Code,
+        CommonName,
+        OfficialName,
+        Capital,
+        Latitude,
+        Longitude,
+        Flag,
+        Population,
+        Language,
+
+        case
+          when Population >= 5000000 then 'Big'
+          else 'Small'
+        end as CountrySize
+}

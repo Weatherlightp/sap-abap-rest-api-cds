@@ -1,0 +1,12 @@
+@AccessControl.authorizationCheck: #NOT_REQUIRED
+@EndUserText.label: 'Countries with High Population'
+define view entity ZI_COUNTRY_BIG 
+    as select from ZI_COUNTRY1
+{
+    key Code,
+    CommonName,
+    OfficialName,
+    Capital,
+    Population
+}
+where Population > 50000000
