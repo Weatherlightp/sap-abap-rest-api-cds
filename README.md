@@ -2,13 +2,17 @@
 
 ## Overview
 
-This is a personal SAP S/4HANA project developed using **ABAP Development Tools (ADT)** in Eclipse.
+This is a personal SAP S/4HANA project developed using **ABAP Development Tools (ADT)** in Eclipse and the **SAP BTP ABAP Environment (Trial)**.
 
-The project demonstrates an end-to-end SAP ABAP backend application that consumes data from an external REST API,
-processes and transforms the JSON response, stores the data in custom SAP database tables,
-exposes it through CDS Views and publishes the data as an **OData V4 service** for consumption by a **SAP Fiori Elements** application.
+The project demonstrates an end-to-end SAP ABAP backend application that:
+- Consumes country data from the REST Countries API
+- Processes and transforms nested JSON responses
+- Stores the data in custom SAP database tables
+- Models the data using CDS Views
+- Publishes an OData V4 service
+- Presents the data through a SAP Fiori Elements application
 
-The project was developed to gain hands-on experience with modern SAP development using SAP S/4HANA, ABAP Cloud and SAP Fiori technologies.
+The project was developed to gain hands-on experience with modern SAP development using SAP S/4HANA, ABAP Cloud, CDS Views, OData V4 and SAP Fiori Elements.
 
 
 
@@ -126,6 +130,46 @@ Service Binding
 SAP Fiori Elements Preview
 ```
 
+### Project Workflow
+
+```text
+1. Execute ZCL_COUNTRY_ORCHESTRATOR
+
+2. ZCL_COUNTRY_ORCHESTRATOR
+   • Calls ZCL_COUNTRY_BUILD to retrieve and process country data.
+   • Calls ZCL_COUNTRY_SAVE to persist the processed data.
+
+3. ZCL_COUNTRY_BUILD
+   • Calls the REST Countries API.
+   • Handles API pagination.
+   • Deserializes the JSON response.
+   • Flattens the nested data into an internal table.
+
+4. ZCL_COUNTRY_SAVE
+   • Stores the data into ZCOUNTRY1 and ZCOUNTRY_COORD database tables.
+
+5. CDS Interface Views 
+   • ZI_COUNTRY1 joins and models the persisted data.
+   • Additional interface views (`ZI_COUNTRY_BIG` and `ZI_COUNTRY_SIZE`) demonstrate alternative data models.
+
+6. CDS Consumption View
+   • ZC_COUNTRY1
+   • Defines the data exposed to the SAP Fiori Application.
+
+7. Metadata Extension
+   • ZC_COUNTRY1_MDE
+   • Defines the Fiori Elements UI layout and annotations.
+
+8. OData V4 Service
+   • Service Definition (ZUI_COUNTRY1)
+   • Service Binding (ZUI_COUNTRY1_BINDING)
+   • Publishes the CDS Consumption View as an OData V4 service.
+
+9. SAP Fiori Elements
+   • List Report
+   • Object Page
+```
+
 ## Project Structure
 
 ```text
@@ -155,19 +199,30 @@ src/
 
 ## Technologies
 
+- SAP BTP ABAP Environment (Trial)
 - SAP S/4HANA
 - ABAP Cloud
 - SAP ABAP Development Tools (ADT)
 - Eclipse
+- REST APIs
+- HTTP Client
+- JSON
 - SAP Dictionary
 - CDS Views
 - Metadata Extensions
 - OData V4
 - SAP Fiori Elements
-- REST APIs
-- HTTP Client
-- JSON
 - Git
 - GitHub
 
 
+## Technical Highlights
+
+- REST API consumption using the ABAP HTTP Client
+- JSON deserialization using /UI2/CL_JSON
+- API pagination handling
+- Data persistence in custom SAP Dictionary tables
+- CDS Interface and Consumption Views
+- Metadata Extensions
+- OData V4 Service Definition and Service Binding
+- SAP Fiori Elements List Report and Object Page
