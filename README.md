@@ -29,6 +29,55 @@ The project was developed to gain hands-on experience with modern SAP developmen
 - ✅ Generate and preview a SAP Fiori Elements application
 
 
+## Screenshots
+
+### 1. SAP Fiori Elements – List Report (Initial Screen)
+
+The application starts with a standard SAP Fiori Elements List Report where users can search and filter countries.
+
+<img src="docs/01-fiori-list-report-empty.png" width="60%">
+
+---
+
+### 2. SAP Fiori Elements – Country List
+
+Displaying the countries retrieved from the REST Countries API.
+
+<img src="docs/02-fiori-list-report-results.png" width="60%">
+
+---
+
+### 3. Search and Filtering
+
+Example of filtering the application by country name.
+
+<img src="docs/03-fiori-filter-portugal.png" width="70%">
+
+---
+
+### 4. Object Page
+
+Detailed country information generated automatically from CDS annotations and Metadata Extensions.
+
+<img src="docs/04-fiori-object-page.png" width="70%">
+
+---
+
+### 5. OData V4 Service Binding
+
+Service Binding used to publish the OData V4 service and preview the Fiori Elements application.
+
+<img src="docs/05-service-binding.png" width="70%">
+
+---
+
+### 6. ABAP Development Tools Project Structure
+
+Project organization inside Eclipse ADT.
+
+![ADT Project](docs/06-adt-project-structure.png)
+
+---
 
 ## Project Architecture
 
@@ -121,6 +170,4 @@ src/
 - Git
 - GitHub
 
-## Screenshots
 
-Screenshots of the SAP Fiori Elements application and project architecture will be added soon.
