@@ -1,0 +1,4 @@
+@EndUserText.label: 'Country Service Definition'
+define service ZUI_COUNTRY1 {
+  expose ZC_COUNTRY1;
+}

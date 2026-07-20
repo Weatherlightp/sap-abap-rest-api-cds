@@ -1,0 +1,14 @@
+Service Binding: ZUI_COUNTRY1_BINDING
+
+Type:
+OData V4 - UI
+
+Purpose:
+Publishes the ZUI_COUNTRY1 Service Definition as an OData V4 service.
+
+Used to:
+- Preview the SAP Fiori Elements application
+- Generate the OData endpoint
+- Publish the service for SAP Fiori consumption
+
+(This has no code that I can copy here)

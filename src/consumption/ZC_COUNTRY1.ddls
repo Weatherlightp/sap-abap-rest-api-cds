@@ -1,0 +1,84 @@
+@Metadata.allowExtensions: true
+@AccessControl.authorizationCheck: #NOT_REQUIRED
+@EndUserText.label: 'Country Consumption View'
+
+@Search.searchable: true
+
+@UI.headerInfo: {
+    typeName: 'Country',
+    typeNamePlural: 'Country Explorer',
+    title: {
+        value: 'CommonName'
+    }
+ }
+
+
+define view entity ZC_COUNTRY1
+  as select from ZI_COUNTRY1
+{
+  @UI.lineItem: [{ position: 10 }]
+  @UI.identification: [{ position: 10 }]
+  @EndUserText.label: 'Country Code'
+  key Code,
+ 
+      @UI.selectionField: [{ position: 10 }]        
+      @UI.lineItem: [{ position: 20 }]             
+      @UI.identification: [{ position: 20 }]      
+      @Search.defaultSearchElement: true          
+      @EndUserText.label: 'Common Name'            
+      CommonName,                                  
+      
+      @UI.identification: [{ position: 30 }]
+      @EndUserText.label: 'Official Name'      
+      OfficialName,
+
+      @UI.selectionField: [{ position: 20 }]      
+      @UI.lineItem: [{ position: 40 }]
+      @UI.identification: [{ position: 40 }]
+      @EndUserText.label: 'Capital'     
+      Capital,
+           
+      @UI.identification: [{ position: 50 }]
+      @EndUserText.label: 'Population'
+      Population,
+      
+      @UI.identification: [{ position: 60 }]
+      @EndUserText.label: 'Language'
+      Language,
+      
+      @UI.identification: [{ position: 70 }]
+      @EndUserText.label: 'Latitude'
+      Latitude,
+      
+      @UI.identification: [{ position: 80 }]
+      @EndUserText.label: 'Longitude'
+      Longitude,
+      
+      @UI.lineItem: [{ position: 30 }]
+      @UI.identification: [{ position: 90 }]
+      @EndUserText.label: 'Flag'
+      @Semantics.imageUrl: true
+      Flag,
+            
+      @EndUserText.label: 'Location'
+      concat(
+          cast( Latitude as abap.char(20) ),
+          concat(
+              ',  ',
+              cast( Longitude as abap.char(20) )
+          )
+      ) as Location,
+    
+      @EndUserText.label: 'Open in Google Maps'
+      concat(
+          'https://maps.google.com/?q=',
+          concat(
+              cast( Latitude as abap.char(20) ),
+              concat(
+                  ',',
+                  cast( Longitude as abap.char(20) )
+              )
+          )
+      ) as GoogleMapsUrl      
+       
+}

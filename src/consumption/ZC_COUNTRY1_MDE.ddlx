@@ -1,0 +1,108 @@
+@Metadata.layer: #CUSTOMER
+
+annotate entity ZC_COUNTRY1 with
+{
+
+  @UI.facet: [
+  
+  
+  {
+    id: 'CountryDetails',
+    position: 10,
+    label: 'Country Details',
+    type: #COLLECTION
+  },
+
+  { 
+    id: 'GeneralInfo',
+    parentId: 'CountryDetails',
+    position: 10,
+    label: 'General Information',
+    type: #IDENTIFICATION_REFERENCE,
+    targetQualifier: 'General'
+  },
+     
+  {
+    id: 'Demographics',
+    parentId: 'CountryDetails',
+    position: 20,
+    label: 'Demographics',
+    type: #IDENTIFICATION_REFERENCE,
+    targetQualifier: 'Demographics'
+  },
+  
+ 
+  
+  {
+    id: 'CountryGeography',
+    position: 20,
+    label: 'Country Geography',
+    type: #COLLECTION
+  },
+     
+  {
+    id: 'Geography',
+    parentId: 'CountryGeography',
+    position: 10,
+    label: 'Geography',
+    type: #IDENTIFICATION_REFERENCE,
+    targetQualifier: 'Geography'
+  },
+     
+  {
+    id: 'Flag',
+    parentId: 'CountryGeography',
+    position: 20,
+    label: 'Flag',
+    type: #IDENTIFICATION_REFERENCE,
+    targetQualifier: 'Flag'
+  },
+  
+  {
+    id: 'Maps',
+    parentId: 'CountryGeography',
+    position: 30,
+    label: 'Maps',
+    type: #IDENTIFICATION_REFERENCE,
+    targetQualifier: 'Maps'
+} 
+  
+  ]  
+  
+   
+  @UI.identification: [{ position: 10, qualifier: 'General' }]
+  Code;
+
+  @UI.identification: [{ position: 20, qualifier: 'General' }]
+  CommonName;
+
+  @UI.identification: [{ position: 30, qualifier: 'General' }]
+  OfficialName;
+
+  @UI.identification: [{ position: 40, qualifier: 'General' }]
+  Capital;
+
+  @UI.identification: [{ position: 10, qualifier: 'Demographics' }]
+  Population;
+
+  @UI.identification: [{ position: 20, qualifier: 'Demographics' }]
+  Language;
+
+  @UI.identification: [{ position: 10, qualifier: 'Geography' }]
+  Latitude;
+
+  @UI.identification: [{ position: 20, qualifier: 'Geography' }]
+  Longitude;
+
+  @UI.identification: [{ position: 10, qualifier: 'Flag' }]
+  @UI.lineItem: [ { position: 90 } ]
+  Flag;
+  
+  @UI.identification: [{ position: 10, qualifier: 'Maps' }]
+  @EndUserText.label: 'Open in Google Maps'
+  GoogleMapsUrl;
+ 
+  @UI.identification: [{ position: 20, qualifier: 'Maps' }]
+  Location;
+
+}
